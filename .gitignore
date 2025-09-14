@@ -42,3 +42,5 @@ yarn-error.log*
 # PDF uploads
 uploads/
 public/uploads/
+
+tsconfig.tsbuildinfo

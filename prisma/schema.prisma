@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  chats Chat[]
+  pdfFiles PdfFile[]
+  
+  @@map("User")
+}
+
+model Chat {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  messages  Json
+  userId    String
+  
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pdfs  PdfFile[]
+  
+  @@map("Chat")
+}
+
+model PdfFile {
+  id          String   @id @default(uuid())
+  filename    String
+  originalName String
+  filePath    String
+  fileSize    Int
+  pageCount   Int
+  uploadDate  DateTime @default(now())
+  chatId      String?
+  userId      String
+  
+  // Relations
+  chat        Chat?    @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("PdfFile")
+}
+

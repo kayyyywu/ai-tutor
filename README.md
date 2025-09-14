@@ -1,202 +1,202 @@
-# PDF Chatbot - AI驱动的PDF文档聊天系统
+# AI Tutor - PDF Document Chat System
 
-一个基于Next.js的智能PDF文档聊天系统，支持PDF上传、文本提取、语义搜索和AI对话功能。
+An intelligent PDF document chat system based on Next.js, supporting PDF upload, text extraction, semantic search, and AI-powered conversations.
 
-## 🚀 功能特性
+## 🚀 Features
 
-- **PDF文档管理**: 上传、存储和管理PDF文件
-- **智能文本提取**: 自动提取PDF文本内容
-- **语义搜索**: 基于AI的PDF内容搜索
-- **AI对话**: 与PDF内容进行智能对话
-- **用户认证**: 基于NextAuth.js的用户认证系统
-- **响应式设计**: 支持桌面和移动设备
+- **PDF Document Management**: Upload, store, and manage PDF files
+- **Intelligent Text Extraction**: Automatically extract PDF text content
+- **Semantic Search**: AI-based PDF content search
+- **AI Chat**: Intelligent conversations with PDF content
+- **User Authentication**: NextAuth.js-based user authentication system
+- **Responsive Design**: Support for desktop and mobile devices
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 chatbot-main/
 ├── app/                          # Next.js App Router
-│   ├── (auth)/                   # 认证相关路由组
-│   │   ├── auth.ts              # NextAuth配置
-│   │   ├── login/page.tsx       # 登录页面
-│   │   └── register/page.tsx    # 注册页面
-│   ├── (chat)/                   # 聊天相关路由组
-│   │   ├── page.tsx             # 主聊天页面
-│   │   ├── chat/[id]/page.tsx   # 聊天详情页面
-│   │   └── api/                 # API路由
-│   │       ├── chat/enhanced/   # 增强聊天API
-│   │       └── pdf/             # PDF相关API
-│   └── globals.css              # 全局样式
-├── components/                   # React组件
-│   ├── custom/                  # 自定义组件
-│   │   ├── split-chat.tsx      # 主聊天界面
-│   │   ├── message.tsx         # 消息组件
-│   │   └── multimodal-input.tsx # 多模态输入组件
-│   ├── pdf/                    # PDF相关组件
-│   │   ├── simple-ai-pdf-viewer.tsx # PDF查看器
-│   │   ├── pdf-upload.tsx      # PDF上传组件
-│   │   └── pdf-list.tsx        # PDF列表组件
-│   └── ui/                     # UI基础组件
-├── db/                         # 数据库相关
-│   ├── prisma-queries.ts       # Prisma查询函数
-│   └── context-manager.ts      # 上下文管理
-├── lib/                        # 工具库
-│   ├── prisma.ts              # Prisma客户端
-│   ├── pdf-search.ts          # PDF搜索功能
-│   └── utils.ts               # 通用工具函数
-└── prisma/                     # 数据库模式
-    └── schema.prisma          # Prisma模式定义
+│   ├── (auth)/                   # Authentication route group
+│   │   ├── auth.ts              # NextAuth configuration
+│   │   ├── login/page.tsx       # Login page
+│   │   └── register/page.tsx    # Registration page
+│   ├── (chat)/                   # Chat route group
+│   │   ├── page.tsx             # Main chat page
+│   │   ├── chat/[id]/page.tsx   # Chat detail page
+│   │   └── api/                 # API routes
+│   │       ├── chat/enhanced/   # Enhanced chat API
+│   │       └── pdf/             # PDF-related APIs
+│   └── globals.css              # Global styles
+├── components/                   # React components
+│   ├── custom/                  # Custom components
+│   │   ├── split-chat.tsx      # Main chat interface
+│   │   ├── message.tsx         # Message component
+│   │   └── multimodal-input.tsx # Multimodal input component
+│   ├── pdf/                    # PDF-related components
+│   │   ├── simple-ai-pdf-viewer.tsx # PDF viewer
+│   │   ├── pdf-upload.tsx      # PDF upload component
+│   │   └── pdf-list.tsx        # PDF list component
+│   └── ui/                     # UI base components
+├── db/                         # Database related
+│   ├── prisma-queries.ts       # Prisma query functions
+│   └── context-manager.ts      # Context management
+├── lib/                        # Utility libraries
+│   ├── prisma.ts              # Prisma client
+│   ├── pdf-search.ts          # PDF search functionality
+│   └── utils.ts               # Common utility functions
+└── prisma/                     # Database schema
+    └── schema.prisma          # Prisma schema definition
 ```
 
-## 📖 代码阅读顺序
+## 📖 Code Reading Order
 
-### 1. 项目配置和入口 (开始阅读)
+### 1. Project Configuration and Entry Points (Start Here)
 ```
-📄 package.json                 # 项目依赖和脚本
-📄 next.config.mjs             # Next.js配置
-📄 tailwind.config.ts          # Tailwind CSS配置
-📄 prisma/schema.prisma        # 数据库模式定义
-```
-
-### 2. 认证系统 (用户管理)
-```
-📄 app/(auth)/auth.ts          # NextAuth.js配置
-📄 app/(auth)/auth.config.ts   # 认证配置
-📄 app/(auth)/login/page.tsx   # 登录页面
-📄 app/(auth)/register/page.tsx # 注册页面
+📄 package.json                 # Project dependencies and scripts
+📄 next.config.mjs             # Next.js configuration
+📄 tailwind.config.ts          # Tailwind CSS configuration
+📄 prisma/schema.prisma        # Database schema definition
 ```
 
-### 3. 数据库层 (数据管理)
+### 2. Authentication System (User Management)
 ```
-📄 lib/prisma.ts               # Prisma客户端配置
-📄 db/prisma-queries.ts        # 数据库查询函数
-📄 db/context-manager.ts       # 对话上下文管理
-```
-
-### 4. 核心工具库 (基础功能)
-```
-📄 lib/utils.ts                # 通用工具函数
-📄 lib/pdf-search.ts           # PDF搜索功能
-📄 ai/index.ts                 # AI模型配置
+📄 app/(auth)/auth.ts          # NextAuth.js configuration
+📄 app/(auth)/auth.config.ts   # Authentication configuration
+📄 app/(auth)/login/page.tsx   # Login page
+📄 app/(auth)/register/page.tsx # Registration page
 ```
 
-### 5. UI基础组件 (界面基础)
+### 3. Database Layer (Data Management)
 ```
-📄 components/ui/              # 基础UI组件
+📄 lib/prisma.ts               # Prisma client configuration
+📄 db/prisma-queries.ts        # Database query functions
+📄 db/context-manager.ts       # Conversation context management
+```
+
+### 4. Core Utility Libraries (Basic Functions)
+```
+📄 lib/utils.ts                # Common utility functions
+📄 lib/pdf-search.ts           # PDF search functionality
+📄 ai/index.ts                 # AI model configuration
+```
+
+### 5. UI Base Components (Interface Foundation)
+```
+📄 components/ui/              # Base UI components
 │   ├── button.tsx
 │   ├── input.tsx
 │   ├── textarea.tsx
 │   └── ...
 ```
 
-### 6. PDF相关组件 (PDF功能)
+### 6. PDF-Related Components (PDF Functionality)
 ```
 📄 components/pdf/
-│   ├── simple-ai-pdf-viewer.tsx # PDF查看器 (核心)
-│   ├── pdf-upload.tsx          # PDF上传组件
-│   └── pdf-list.tsx            # PDF列表组件
+│   ├── simple-ai-pdf-viewer.tsx # PDF viewer (core)
+│   ├── pdf-upload.tsx          # PDF upload component
+│   └── pdf-list.tsx            # PDF list component
 ```
 
-### 7. 聊天核心组件 (主要功能)
+### 7. Chat Core Components (Main Functionality)
 ```
 📄 components/custom/
-│   ├── split-chat.tsx          # 主聊天界面 (核心)
-│   ├── message.tsx             # 消息显示组件
-│   ├── multimodal-input.tsx    # 输入组件
-│   ├── markdown.tsx            # Markdown渲染
-│   └── icons.tsx               # 图标组件
+│   ├── split-chat.tsx          # Main chat interface (core)
+│   ├── message.tsx             # Message display component
+│   ├── multimodal-input.tsx    # Input component
+│   ├── markdown.tsx            # Markdown rendering
+│   └── icons.tsx               # Icon components
 ```
 
-### 8. API路由 (后端逻辑)
+### 8. API Routes (Backend Logic)
 ```
 📄 app/(chat)/api/
-│   ├── chat/enhanced/route.ts  # 增强聊天API (核心)
-│   ├── pdf/upload/route.ts     # PDF上传API
-│   ├── pdf/extract-text/route.ts # PDF文本提取API
-│   ├── pdf/search/route.ts     # PDF搜索API
-│   └── pdf/associate/route.ts  # PDF关联API
+│   ├── chat/enhanced/route.ts  # Enhanced chat API (core)
+│   ├── pdf/upload/route.ts     # PDF upload API
+│   ├── pdf/extract-text/route.ts # PDF text extraction API
+│   ├── pdf/search/route.ts     # PDF search API
+│   └── pdf/associate/route.ts  # PDF association API
 ```
 
-### 9. 页面组件 (用户界面)
+### 9. Page Components (User Interface)
 ```
-📄 app/(chat)/page.tsx          # 主聊天页面
-📄 app/(chat)/chat/[id]/page.tsx # 聊天详情页面
-📄 app/layout.tsx               # 根布局
+📄 app/(chat)/page.tsx          # Main chat page
+📄 app/(chat)/chat/[id]/page.tsx # Chat detail page
+📄 app/layout.tsx               # Root layout
 ```
 
-## 🔧 技术栈
+## 🔧 Tech Stack
 
-- **前端框架**: Next.js 14 (App Router)
-- **UI框架**: React 18 + TypeScript
-- **样式**: Tailwind CSS
-- **数据库**: PostgreSQL + Prisma ORM
-- **认证**: NextAuth.js
-- **AI**: OpenAI API
-- **PDF处理**: pdf-parse, pdf-lib
-- **状态管理**: React Hooks + SWR
+- **Frontend Framework**: Next.js 14 (App Router)
+- **UI Framework**: React 18 + TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: PostgreSQL + Prisma ORM
+- **Authentication**: NextAuth.js
+- **AI**: OpenAI API (GPT-4o-mini)
+- **PDF Processing**: pdf-parse, pdf-lib
+- **State Management**: React Hooks + SWR
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 1. 安装依赖
+### 1. Install Dependencies
 ```bash
 npm install
 ```
 
-### 2. 环境配置
+### 2. Environment Configuration
 ```bash
 cp .env.example .env.local
-# 配置必要的环境变量
+# Configure necessary environment variables
 ```
 
-### 3. 数据库设置
+### 3. Database Setup
 ```bash
 npx prisma generate
 npx prisma db push
 ```
 
-### 4. 启动开发服务器
+### 4. Start Development Server
 ```bash
 npm run dev
 ```
 
-## 📝 核心功能说明
+## 📝 Core Functionality
 
-### PDF处理流程
-1. **上传**: 用户上传PDF文件
-2. **存储**: 文件保存到服务器和数据库
-3. **提取**: 使用pdf-parse提取文本内容
-4. **搜索**: 基于语义搜索查找相关内容
-5. **对话**: AI基于PDF内容回答问题
+### PDF Processing Flow
+1. **Upload**: User uploads PDF files
+2. **Storage**: Files saved to server and database
+3. **Extraction**: Extract text content using pdf-parse
+4. **Search**: Find relevant content using semantic search
+5. **Chat**: AI answers questions based on PDF content
 
-### 聊天系统架构
-1. **前端**: React组件处理用户交互
-2. **API**: Next.js API路由处理请求
-3. **AI**: OpenAI API生成智能回复
-4. **数据库**: Prisma管理数据持久化
+### Chat System Architecture
+1. **Frontend**: React components handle user interactions
+2. **API**: Next.js API routes process requests
+3. **AI**: OpenAI API generates intelligent responses
+4. **Database**: Prisma manages data persistence
 
-## 🎯 关键文件说明
+## 🎯 Key Files
 
-- **`split-chat.tsx`**: 主聊天界面，整合PDF查看和对话功能
-- **`enhanced/route.ts`**: 核心聊天API，处理AI对话逻辑
-- **`simple-ai-pdf-viewer.tsx`**: PDF查看器，支持页面导航
-- **`pdf-search.ts`**: PDF搜索算法，支持语义搜索
-- **`prisma-queries.ts`**: 数据库操作，管理用户和聊天数据
+- **`split-chat.tsx`**: Main chat interface, integrates PDF viewing and conversation
+- **`enhanced/route.ts`**: Core chat API, handles AI conversation logic
+- **`simple-ai-pdf-viewer.tsx`**: PDF viewer with page navigation support
+- **`pdf-search.ts`**: PDF search algorithm with semantic search
+- **`prisma-queries.ts`**: Database operations, manages user and chat data
 
-## 🔍 调试建议
+## 🔍 Debugging Tips
 
-1. **查看控制台日志**: 所有API都有详细的日志输出
-2. **检查数据库**: 使用Prisma Studio查看数据状态
-3. **测试API**: 使用浏览器开发者工具测试API端点
-4. **PDF处理**: 检查文件路径和权限设置
+1. **Check Console Logs**: All APIs have detailed log output
+2. **Database Inspection**: Use Prisma Studio to view data state
+3. **API Testing**: Use browser developer tools to test API endpoints
+4. **PDF Processing**: Check file paths and permission settings
 
-## 📚 扩展功能
+## 📚 Extension Features
 
-- 支持更多文件格式
-- 添加文档标注功能
-- 实现多语言支持
-- 添加用户权限管理
-- 集成更多AI模型
+- Support for more file formats
+- Add document annotation functionality
+- Implement multi-language support
+- Add user permission management
+- Integrate more AI models
 
 ---
 
-**注意**: 这是一个学习项目，展示了现代Web应用的全栈开发技术。代码结构清晰，适合学习和扩展。
+**Note**: This is a learning project that demonstrates modern full-stack web development techniques. The code structure is clear and suitable for learning and extension.
